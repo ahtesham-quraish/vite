@@ -1,3 +1,5 @@
+name: Deploy Vite App
+
 on:
   push:
     branches:
@@ -21,16 +23,16 @@ jobs:
 
       - name: Build
         run: npm run build
-        continue-on-error: false
-      - name: Debug dist folder
+
+      - name: Debug dist contents
         run: |
+          echo "Root:"
           ls -la
+          echo "Dist:"
           ls -la dist
-      - name: List output directory
-        run: ls -R dist  
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
-          token: ${{ secrets.GH_PAT }}
+          token: ${{ secrets.GH_PAT }}  # this fixes 403 and temp folder issues
