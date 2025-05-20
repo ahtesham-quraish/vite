@@ -18,11 +18,13 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm install
+      - name: Clean install to fix Rollup native module error
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
 
       - name: Run tests
-        run: npm run test -- --run  # <-- Add this step
+        run: npm run test -- --run
 
       - name: Build
         run: npm run build
