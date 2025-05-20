@@ -22,6 +22,9 @@ jobs:
       - name: Build
         run: npm run build
         continue-on-error: false
+      
+      - name: List output directory
+        run: ls -R dist  
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
