@@ -19,15 +19,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Build
+        run: npm run build
+        continue-on-error: false
       - name: Debug dist folder
         run: |
           ls -la
           ls -la dist
-            
-      - name: Build
-        run: npm run build
-        continue-on-error: false
-      
       - name: List output directory
         run: ls -R dist  
 
