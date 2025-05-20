@@ -21,6 +21,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Run tests
+        run: npm run test -- --run  # <-- Add this step
+
       - name: Build
         run: npm run build
 
@@ -35,4 +38,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
-          token: ${{ secrets.GH_PAT }}  # this fixes 403 and temp folder issues
+          token: ${{ secrets.GH_PAT }}
