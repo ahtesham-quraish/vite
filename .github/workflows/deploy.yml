@@ -23,8 +23,8 @@ jobs:
           rm -rf node_modules package-lock.json
           npm install
 
-      - name: Run Prettier check
-        run: npm run prettier -- --check .
+      - name: Run Prettier and auto-format
+        run: npm run prettier:write
       - name: Run tests
         run: npm run test -- --run
 
