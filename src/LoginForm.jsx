@@ -6,6 +6,7 @@ export default function LoginForm() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
+  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     setError('');
