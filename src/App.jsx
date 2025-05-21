@@ -4,6 +4,7 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -33,6 +34,9 @@ function App() {
       <div>
         <LoginForm />
       </div>
+      {/* <div>
+        <SignupForm />
+      </div> */}
     </>
   );
 }
