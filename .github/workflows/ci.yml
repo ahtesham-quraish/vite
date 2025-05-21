@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches-ignore:
+      - main # skip main to avoid running deploy and ci twice on main push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Clean install to fix Rollup native module error
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
+
+      - name: Run Prettier and auto-format
+        run: npm run prettier:write
+
+      - name: Run tests with coverage
+        run: npm run test:coverage
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Run ESLint
+        run: npm run lint

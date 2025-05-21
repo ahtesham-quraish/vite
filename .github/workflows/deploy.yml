@@ -1,4 +1,4 @@
-name: Deploy Vite App
+name: Deploy
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,18 +23,6 @@ jobs:
           rm -rf node_modules package-lock.json
           npm install
 
-      - name: Run Prettier and auto-format
-        run: npm run prettier:write
-      - name: Run tests
-        run: npm run test:coverage
-
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-
-      - name: Run ESLint
-        run: npm run lint
       - name: Build
         run: npm run build
 
