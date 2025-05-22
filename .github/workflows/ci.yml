@@ -22,7 +22,8 @@ jobs:
             -w /app \
             vite-ci-image \
             sh -c "
-              npm run prettier:check || exit 1
-              npm run lint || exit 1
-              npm test || exit 1
+              npm install && \
+              npm run prettier:check && \
+              npm run lint && \
+              npm test
             "
