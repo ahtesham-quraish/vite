@@ -5,7 +5,7 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Install tools globally
-RUN npm install -g prettier eslint @eslint/js vite
+RUN npm install -g prettier eslint vite
 
 # Copy package files
 COPY package.json package-lock.json ./
@@ -18,6 +18,8 @@ COPY . .
 
 # Optional version checks
 RUN prettier --version && eslint --version && vite --version
+
+RUN ls -la node_modules/@eslint/js
 
 # Default command (not used in CI)
 CMD ["npm", "run", "dev"]
