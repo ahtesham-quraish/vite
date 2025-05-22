@@ -5,7 +5,7 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Install tools globally
-RUN npm install -g prettier eslint vite
+RUN npm install -g prettier eslint @eslint/js vite
 
 # Copy package files
 COPY package.json package-lock.json ./
