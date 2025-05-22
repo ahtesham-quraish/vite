@@ -9,4 +9,8 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
   },
+  server: {
+    host: true, // expose to 0.0.0.0
+    port: 5173,
+  },
 });
